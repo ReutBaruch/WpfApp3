@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp3.Views"
+             xmlns:Views="clr-namespace:WpfApp3.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -39,6 +40,9 @@
                 <TextBlock Name="throttleValue" Text ="{Binding ElementName=throttleSlider,
                                 UpdateSourceTrigger=PropertyChanged, Path=Value, StringFormat={}{0:0.00}}" HorizontalAlignment="Right" Margin="0,-14,0,335"/>
             </StackPanel>
+            <!-- joy stick -->
+            <Views:Joystick Grid.Column="2" Grid.Row="1" Margin="10" x:Name="Joystick" Aileron="{Binding ElementName=AileronValue, Path=Text, Mode=OneWayToSource}"
+                        Elevator="{Binding ElementName=ElevatorValue, Path=Text, Mode=OneWayToSource}"/>
         </DockPanel>
     </Grid>
 </UserControl>
