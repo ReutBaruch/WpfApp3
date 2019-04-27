@@ -11,12 +11,12 @@
             <StackPanel Height="424" Canvas.Left="45" Width="724" Canvas.Top="-34">
                 <TextBox x:Name="Commands" Height="289" Text="{Binding Data, UpdateSourceTrigger=PropertyChanged}" Background="{Binding Color, UpdateSourceTrigger=PropertyChanged}"/>
                 <WrapPanel HorizontalAlignment="Center">
-                    <Button Content="Clear" Margin="10" Height="41" Width="251"/>
                     <Button Content="OK" Command="{Binding OkCommand}" Margin="10" Width="262"/>
+                    <Button Content="Clear" Command="{Binding ClearCommand}" Margin="10" Height="41" Width="251" />
                 </WrapPanel>
             </StackPanel>
         </Canvas>
-
-
     </Grid>
 </UserControl>
+    
+    <!--Command="{Binding MyTextProperty}"-->

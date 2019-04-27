@@ -6,36 +6,33 @@
              xmlns:d3="http://research.microsoft.com/DynamicDataDisplay/1.0"
              xmlns:local="clr-namespace:WpfApp3.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-
-    <DockPanel>
-        <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center" >
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBlock" x:Key="LabelStyle">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="Margin" Value="4" />
+            </Style>
+            <RotateTransform x:Key="rotate" Angle="90"/>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource LabelStyle}" LayoutTransform="{StaticResource rotate}" VerticalAlignment="Center">Lon</TextBlock>
+        <d3:ChartPlotter Grid.Row="0" Grid.Column="1" LegendVisible="False" Name="plotter" Margin="10.333,60,0,0.333">
+        </d3:ChartPlotter>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center">Lat</TextBlock>
+        <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="261.333,0,253,336.333" Width="251" Grid.Column="1" >
             <Button x:Name="Connect"  Content="Connect" Margin="15 15 15 15" Padding="10 5 10 5" FontSize="20"  Command="{Binding ConnectCommand}"/>
-            <Button x:Name="Settings" Content="Settings" Margin="15 15 15 15" Padding="10 5 10 5" FontSize="20" Command="{Binding SettingCommand}"/>
+            <Button x:Name="Settings" Content="Settings" Margin="15 15 15 15" Padding="10 5 10 5" FontSize="20" Command="{Binding SettingsCommand}"/>
         </WrapPanel>
-        <Grid>
-            <Grid.Resources>
-                <Style TargetType="TextBlock" x:Key="LabelStyle">
-                    <Setter Property="FontSize" Value="20" />
-                    <Setter Property="HorizontalAlignment" Value="Center" />
-                    <Setter Property="FontWeight" Value="Bold" />
-                    <Setter Property="Foreground" Value="Black" />
-                    <Setter Property="Margin" Value="4" />
-                </Style>
-                <RotateTransform x:Key="rotate" Angle="90"/>
-            </Grid.Resources>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <TextBlock Style="{StaticResource LabelStyle}" LayoutTransform="{StaticResource rotate}" VerticalAlignment="Center">Lon</TextBlock>
-            <d3:ChartPlotter Grid.Row="0" Grid.Column="1" LegendVisible="False" Name="plotter">
-            </d3:ChartPlotter>
-            <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center">Lat</TextBlock>
-        </Grid>
-    </DockPanel>
+    </Grid>
 </UserControl>

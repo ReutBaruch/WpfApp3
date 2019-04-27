@@ -45,8 +45,8 @@ namespace WpfApp3
 
         public void ServerConnect(string ip, int port)
         {
-            ip = "127.0.0.1";
-            port = 5402;
+            //ip = "127.0.0.1";
+            //port = 5402;
             
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ip), port);
             client = new TcpClient();

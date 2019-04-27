@@ -85,8 +85,8 @@ namespace WpfApp3
 
         public void StartConnect(string ip, int port)
         {
-            ip = "127.0.0.1";
-            port = 5400;
+            //ip = "127.0.0.1";
+            //port = 5400;
             if (listener != null)
             {
                 EndConnect();

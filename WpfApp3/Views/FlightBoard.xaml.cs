@@ -48,7 +48,7 @@ namespace WpfApp3.Views
         {
             if (e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
             {
-                Point p1 = new Point(0, 0);            // Fill here!
+                Point p1 = new Point((double)this.flightViewModel.Lat, (double)this.flightViewModel.Lon);
                 planeLocations.AppendAsync(Dispatcher, p1);
             }
         }

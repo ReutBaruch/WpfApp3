@@ -42,5 +42,10 @@ namespace WpfApp3
             //Joystick j = new Joystick();
             //j.InitializeComponent();
         }
+
+        private void AutoPilot_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

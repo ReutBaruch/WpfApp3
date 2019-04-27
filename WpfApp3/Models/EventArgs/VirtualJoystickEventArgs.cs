@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace WpfApp3.Models.EventArgs
 
 {
-    class VirtualJoystickEventArgs
+    public class VirtualJoystickEventArgs
     {
         public double Aileron { get; set; }
         public double Elevator { get; set; }

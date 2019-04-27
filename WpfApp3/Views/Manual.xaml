@@ -8,27 +8,27 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-    <DockPanel LastChildFill="True">
-        <!--AILERON-->
-        <TextBlock DockPanel.Dock="Top" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="⟵ aileron ⟶ "/><InlineUIContainer>
+        <DockPanel LastChildFill="True">
+            <!--AILERON-->
+            <TextBlock DockPanel.Dock="Top" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="⟵ aileron ⟶ "/><InlineUIContainer>
                     <TextBlock x:Name="AileronValue" Text ="{Binding Aileron, StringFormat={}{0:0.00}, UpdateSourceTrigger=PropertyChanged ,Mode=OneWayToSource}" HorizontalAlignment="Right"/>
         </InlineUIContainer></TextBlock>
-        <!--ELEVATOR-->
-        <TextBlock DockPanel.Dock ="Top" x:Name="ElevatorValue" HorizontalAlignment="Right" Text ="{Binding Elevator, UpdateSourceTrigger=PropertyChanged , Mode=OneWayToSource, StringFormat=0.0#}"/>
+            <!--ELEVATOR-->
+            <TextBlock DockPanel.Dock ="Top" x:Name="ElevatorValue" HorizontalAlignment="Right" Text ="{Binding Elevator, UpdateSourceTrigger=PropertyChanged , Mode=OneWayToSource, StringFormat=0.0#}"/>
             <TextBlock Text=" &#x27f5; elevator &#x27f6;" DockPanel.Dock="Right" Margin="0" FontSize="15" VerticalAlignment="Center">
                 <TextBlock.LayoutTransform>
                     <RotateTransform Angle="90" />
                 </TextBlock.LayoutTransform>
             </TextBlock>
-        <!--RUDDER-->
-        <StackPanel DockPanel.Dock="Bottom">
-            <Slider x:Name="rudderSlider" Minimum="-1" Maximum="1" Value="{Binding Rudder, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" TickFrequency="0.1" TickPlacement="BottomRight"
+            <!--RUDDER-->
+            <StackPanel DockPanel.Dock="Bottom">
+                <Slider x:Name="rudderSlider" Minimum="-1" Maximum="1" Value="{Binding Rudder, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" TickFrequency="0.1" TickPlacement="BottomRight"
                     DockPanel.Dock="Bottom" Margin="90,5,120,5"/>
                 <TextBlock DockPanel.Dock="Bottom" Margin="0,0,40,0" FontSize="15" HorizontalAlignment="Center"><Run Text="⟵ rudder ⟶ "/><InlineUIContainer>
                     <TextBlock x:Name="rudderValue" Text ="{Binding Value, ElementName=rudderSlider, StringFormat=\{0:0.00\}, UpdateSourceTrigger=PropertyChanged}" Width="31" HorizontalAlignment="Right" RenderTransformOrigin="1.412,0.84"/>
                 </InlineUIContainer></TextBlock>
             </StackPanel>
-        <!--THROTTLE-->
+            <!--THROTTLE-->
             <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
                 <TextBlock Text=" &#x27f5; throttle  &#x27f6;" DockPanel.Dock="Left" Margin="10" FontSize="15" VerticalAlignment="Center">
                     <TextBlock.LayoutTransform>
@@ -40,9 +40,17 @@
                 <TextBlock Name="throttleValue" Text ="{Binding ElementName=throttleSlider,
                                 UpdateSourceTrigger=PropertyChanged, Path=Value, StringFormat={}{0:0.00}}" HorizontalAlignment="Right" Margin="0,-14,0,335"/>
             </StackPanel>
-            <!-- joy stick -->
-            <Views:Joystick Grid.Column="2" Grid.Row="1" Margin="10" x:Name="Joystick" Aileron="{Binding ElementName=AileronValue, Path=Text, Mode=OneWayToSource}"
-                        Elevator="{Binding ElementName=ElevatorValue, Path=Text, Mode=OneWayToSource}"/>
+            <!-- Joystick -->
+
+            <local:Joystick x:Name="Joystick" Grid.Column="2" Grid.Row="1" Margin="10"  Aileron="{Binding ElementName=AileronValue, Path=Text, Mode=OneWayToSource}"
+                            Elevator="{Binding ElementName=ElevatorValue, Path=Text, Mode=OneWayToSource}"/>
+
+
+            <!-- Aileron="{Binding ElementName=AileronValue, Path=Text, Mode=OneWayToSource}"
+                        Elevator="{Binding ElementName=ElevatorValue, Path=Text, Mode=OneWayToSource}"-->
         </DockPanel>
     </Grid>
 </UserControl>
+
+
+

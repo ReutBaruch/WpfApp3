@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
+//using System.Drawing;
 using System.Windows.Input;
-//using System.Windows.Media;
+using System.Windows.Media;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WpfApp3.Models;
+using System.Windows;
+using System.Windows.Controls;
+
 
 
 namespace WpfApp3.ViewModels
@@ -18,10 +21,13 @@ namespace WpfApp3.ViewModels
         private AutoPilotModel autoModel;
         private Brush brush = Brushes.White;
         private ICommand okCommand;
+        private ICommand clearCommand;
+        private string _AssignedTo;
 
         public AutoPilotViewModel()
         {
             this.autoModel = new AutoPilotModel();
+           // clearCommand=new AutoPilotModel()
         }
 
 
@@ -35,8 +41,10 @@ namespace WpfApp3.ViewModels
             {
                 this.data = value;
 
-                if (string.IsNullOrEmpty(Data)) Color = Brushes.Lavender;
-                else if (!String.IsNullOrEmpty(Data)) Color = Brushes.Blue;
+                if (string.IsNullOrEmpty(Data)) Color = Brushes.White;
+                else if ((!String.IsNullOrEmpty(Data)) && (Color == Brushes.White)){
+                    Color = Brushes.LightPink;
+                }
             }
         }
 
@@ -62,10 +70,54 @@ namespace WpfApp3.ViewModels
                  {
                      string send = Data;
                      Data = "";
-                     Color = Brushes.Yellow;
+                     Color = Brushes.White;
                      autoModel.scriptCommands(send);
                  }));
             }
         }
+        public ICommand ClearCommand
+        {
+            get
+            {
+                return clearCommand ?? (clearCommand = new CommandHandler(() =>
+                {
+                    Data = "";
+                    Color = Brushes.White;
+                    NotifyPropertyChanged(Data);
+                }));
+            }
+        }
+        public string AssignedTo
+        {
+            get
+            {
+                return _AssignedTo;
+            }
+            set
+            {
+                this.data = " ";
+                //AssignedTo = string.Empty;
+                /*
+                if (_AssignedTo != value)
+                {
+                    _AssignedTo = value;
+
+                    //RaisePropertyChanged("AssignedTo");
+                }*/
+            }
+        }
+
+        //void RaisePropertyChanged(string prop) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+
+
+        //ClearTextBox
+
+        /*
+        public string MyTextProperty
+        {
+            get { return _text; ; }
+            set { _text = value; OnPropertyChanged(" MyTextProperty"); }
+        }
+        */
     }
 }

@@ -19,7 +19,7 @@ using System.Windows.Media.Animation;
 namespace WpfApp3.Views
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for Joystick.xaml
     /// </summary>
     public partial class Joystick : UserControl
     {
@@ -109,7 +109,6 @@ namespace WpfApp3.Views
         private double _prevAileron, _prevElevator;
         private double canvasWidth, canvasHeight;
         private readonly Storyboard centerKnob;
-
         public Joystick()
         {
             InitializeComponent();
@@ -120,7 +119,6 @@ namespace WpfApp3.Views
 
             centerKnob = Knob.Resources["CenterKnob"] as Storyboard;
         }
-
         private void Knob_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             _startPos = e.GetPosition(Base);
@@ -135,9 +133,6 @@ namespace WpfApp3.Views
 
         private void Knob_MouseMove(object sender, MouseEventArgs e)
         {
-            ///!!!!!!!!!!!!!!!!!
-            /// YOU MUST CHANGE THE FUNCTION!!!!
-            ///!!!!!!!!!!!!!!
             if (!Knob.IsMouseCaptured) return;
 
             Point newPos = e.GetPosition(Base);
@@ -147,8 +142,8 @@ namespace WpfApp3.Views
             double distance = Math.Round(Math.Sqrt(deltaPos.X * deltaPos.X + deltaPos.Y * deltaPos.Y));
             if (distance >= canvasWidth / 2 || distance >= canvasHeight / 2)
                 return;
-            Aileron = -deltaPos.Y;
-            Elevator = deltaPos.X;
+            Aileron = (-deltaPos.Y)/124;
+            Elevator = deltaPos.X/124;
 
             knobPosition.X = deltaPos.X;
             knobPosition.Y = deltaPos.Y;
@@ -177,3 +172,5 @@ namespace WpfApp3.Views
 
     }
 }
+
+
